@@ -1,0 +1,27 @@
+server:
+  port: 18082
+
+spring:
+  application:
+    name: notification
+
+  # Note; this datasource; will connect to the docker image; via localhost port mapping
+  datasource:
+    password: password
+    url: jdbc:postgresql://localhost:15432/notification
+    username: ismail
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
