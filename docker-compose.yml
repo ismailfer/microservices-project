@@ -39,11 +39,11 @@ services:
 
 
 
-#  zipkin:
-#    image: openzipkin/zipkin
-#    container_name: zipkin
-#    ports:
-#      - "9411:9411"
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      - "9411:9411"
 #    networks:
 #      - spring
 #  rabbitmq:
