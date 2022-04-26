@@ -8,10 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 //@FeignClient("NOTIFICATION")
-@FeignClient(
-        name = "notification",
-        url = "${clients.notification.url}"
-)
+@FeignClient(name = "notification")
+//@FeignClient(name = "notification", url = "${clients.notification.url}")
 public interface NotificationClient
 {
     @PostMapping(path = "api/v1/notification")

@@ -1,0 +1,24 @@
+server:
+  port: 18083
+
+spring:
+  application:
+    name: api-gateway
+
+  zipkin.base-url: http://localhost:9411
+
+# Gateway settings
+  cloud:
+    gateway:
+      routes:
+        - id: customer
+          uri: lb://customer
+          predicates:
+            - Path=/api/v1/customers/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
