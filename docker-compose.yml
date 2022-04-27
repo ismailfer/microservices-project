@@ -18,7 +18,7 @@ services:
     ports:
       - "15432:5432"
     networks:
-      - postgres
+      - spring
     restart: unless-stopped
 
   pgadmin:
@@ -33,7 +33,7 @@ services:
     ports:
       - "5050:80"
     networks:
-      - postgres
+      - spring
     restart: unless-stopped
 
 
@@ -53,7 +53,8 @@ services:
     ports:
       - "5672:5672"         # clients will be connecting to this one
       - "15672:15672"       # management port
-
+    networks:
+      - spring
 
 # modules containers from docker hub
   eureka-server:
@@ -90,11 +91,11 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
     networks:
       - spring
-      - postgres
     depends_on:
       - zipkin
       - postgres
       - rabbitmq
+      - eureka-server
 
   fraud:
     image: ismailfer/fraud:latest
@@ -105,11 +106,10 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
     networks:
       - spring
-      - postgres
     depends_on:
       - zipkin
       - postgres
-      - rabbitmq
+      - eureka-server
 
   notification:
     image: ismailfer/notification:latest
@@ -120,11 +120,11 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
     networks:
       - spring
-      - postgres
     depends_on:
-     - zipkin
+      - zipkin
       - postgres
       - rabbitmq
+      - eureka-server
 
 # Networks are used within the docker container; as localhost there will refer to the container and not our host
 networks:

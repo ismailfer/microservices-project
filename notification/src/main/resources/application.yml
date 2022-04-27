@@ -9,7 +9,7 @@ spring:
   datasource:
     password: password
 #    url: jdbc:postgresql://localhost:15432/notification
-    url: jdbc:postgresql://postgres:15432/notification
+    url: jdbc:postgresql://postgres:5432/notification
     username: ismail
   jpa:
     hibernate:
