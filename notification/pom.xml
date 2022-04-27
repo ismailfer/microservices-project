@@ -37,6 +37,15 @@
             <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -44,6 +53,7 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- Modules dependencies -->
         <dependency>
             <groupId>com.ismail.microservices</groupId>
             <artifactId>clients</artifactId>
@@ -52,8 +62,10 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+            <groupId>com.ismail.microservices</groupId>
+            <artifactId>msg-queue</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>

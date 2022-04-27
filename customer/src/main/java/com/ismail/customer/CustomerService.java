@@ -1,5 +1,6 @@
 package com.ismail.customer;
 
+import com.ismail.amqp.RabbitMQMessageProducer;
 import com.ismail.clients.fraud.FraudCheckResponse;
 import com.ismail.clients.fraud.FraudClient;
 import com.ismail.clients.notification.NotificationClient;
@@ -20,6 +21,8 @@ public class CustomerService
 
     private final NotificationClient notificationClient;
 
+    private final RabbitMQMessageProducer rabbitMQMessageProducer;
+
     public void registerCustomer(CustomerRegistrationRequest request)
     {
         Customer customer = Customer.builder()
@@ -38,19 +41,30 @@ public class CustomerService
 
         // check if fraud
 
-        /* RestAPI call Using hard coded server:port
+        // --------------------------------------------------------------------------------------
+        // RestAPI call Using hard coded server:port
+        // --------------------------------------------------------------------------------------
+
+        /*
         FraudCheckResponse fraudCheckResponse = restTemplate.getForObject("http://localhost:18081/api/v1/fraud-check/{customerId}",
                 FraudCheckResponse.class,
                 customer.getId());
         */
 
-        /* RestAPI call Using Eureka
+        // --------------------------------------------------------------------------------------
+        // RestAPI call Using Eureka
+        // --------------------------------------------------------------------------------------
+
+        /*
         FraudCheckResponse fraudCheckResponse = restTemplate.getForObject("http://FRAUD/api/v1/fraud-check/{customerId}",
                 FraudCheckResponse.class,
                 customer.getId());
         */
 
+        // --------------------------------------------------------------------------------------
         // RestAPI call Using OpenFeign
+        // --------------------------------------------------------------------------------------
+
         FraudCheckResponse fraudCheckResponse = fraudClient.isFraudster(customer.getId());
 
         if (fraudCheckResponse.isFraudster())
@@ -58,16 +72,23 @@ public class CustomerService
             throw new IllegalStateException("Fraudster");
         }
 
-        // Send notification - Using OpenFeign
 
         NotificationRequest notifyRequest = new NotificationRequest(
                 customer.getId(),
                 customer.getEmail(),
                 String.format("Hi %s, welcome to Microservices!", customer.getFirstName()));
 
-        notificationClient.sendNotification(notifyRequest);
+        // --------------------------------------------------------------------------------------
+        // Send notification - Using OpenFeign
+        // --------------------------------------------------------------------------------------
+        // notificationClient.sendNotification(notifyRequest);
 
-        // TODO: send notification using a queue
+        // --------------------------------------------------------------------------------------
+        // Send notification - Using RabbitMQ
+        // --------------------------------------------------------------------------------------
+
+        // todo: move these configs to application properties
+        rabbitMQMessageProducer.publish(notifyRequest, "internal.exchange", "internal.notification.routing-key");
 
 
     }

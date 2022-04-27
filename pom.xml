@@ -23,6 +23,7 @@
         <module>clients</module>
         <module>notification</module>
         <module>apigateway</module>
+        <module>msg-queue</module>
     </modules>
 
     <properties>

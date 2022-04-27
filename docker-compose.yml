@@ -46,12 +46,14 @@ services:
       - "9411:9411"
 #    networks:
 #      - spring
-#  rabbitmq:
-#    image: rabbitmq:3.9.11-management-alpine
-#    container_name: rabbitmq
-#    ports:
-#      - "5672:5672"
-#      - "15672:15672"
+
+  rabbitmq:
+    image: rabbitmq:3.9.11-management-alpine
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"         # clients will be connecting to this one
+      - "15672:15672"       # management port
+
 #    networks:
 #      - spring
   #  eureka-server:

@@ -21,6 +21,16 @@ public class NotificationController
     {
         log.info("new notification request: ", notificationRequest);
 
+        // sleep few seconds to simulate a slow response
+        try
+        {
+            Thread.sleep(2000L);
+        }
+        catch (Exception e)
+        {
+
+        }
+
         notificationService.sendNotification(notificationRequest);
     }
 }
