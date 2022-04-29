@@ -3,15 +3,19 @@
 
 ## Description
 
-- Microservices
+- Microservices Project
+- Three microservices modules
+- RestAPI and Message Queues
 - Spring Boot
-- Spring JPA
-- Spring Sleuth, Zipkin
-- Docker, Docker Compose
-- RabbitMQ, Kafka
+- Spring Data JPA
+- Distrubted tracing with Spring Sleuth / Zipkin
+- RabbitMQ
+- Kafka message queue
 - API Gateway Load Balancer
-- Eureka
-- Postgres
+- Eureka service discovery
+- Postgres DB
+- Docker, Docker Compose
+- Kubernetes, Minikube
 
 Based on the course by Amigoscode:
 https://www.amigoscode.com/p/microservices
