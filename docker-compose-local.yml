@@ -9,6 +9,7 @@ services:
     container_name: postgres
     image: postgres
     environment:
+      POSTGRES_DB: ismaildb
       POSTGRES_USER: ismail
       POSTGRES_PASSWORD: password
       PGDATA: /data/postgres

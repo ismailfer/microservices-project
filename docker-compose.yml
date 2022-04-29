@@ -14,7 +14,7 @@ services:
       PGDATA: /data/postgres
     volumes:
       - postgres:/data/postgres
-    # we need to use 15432 to avoid clashing wiht postgres db on localhost
+    # we need to use 15432 to avoid clashing with postgres db on localhost
     ports:
       - "5432:5432"
     networks:
