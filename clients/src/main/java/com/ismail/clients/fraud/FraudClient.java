@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 //@FeignClient("FRAUD")
-@FeignClient(name = "fraud")
-//@FeignClient(name = "fraud", url = "${clients.fraud.url}")
+//@FeignClient(name = "fraud") // works for eureka clients
+@FeignClient(name = "fraud", url = "${clients.fraud.url}")   // used for k8s service discovery
 public interface FraudClient
 {
     @GetMapping(path = "api/v1/fraud-check/{customerId}")

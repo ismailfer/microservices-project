@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 //@FeignClient("NOTIFICATION")
-@FeignClient(name = "notification")
-//@FeignClient(name = "notification", url = "${clients.notification.url}")
+//@FeignClient(name = "notification") // works for eureka
+@FeignClient(name = "notification", url = "${clients.notification.url}") // used for k8s service discovery
 public interface NotificationClient
 {
     @PostMapping(path = "api/v1/notification")

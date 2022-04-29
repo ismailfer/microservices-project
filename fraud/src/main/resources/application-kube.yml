@@ -1,15 +1,15 @@
 server:
-  port: 18080
+  port: 8081
 
 spring:
   application:
-    name: customer
+    name: fraud
 
   # Note; this datasource; will connect to the docker image; via localhost port mapping
   datasource:
     password: password
-#    url: jdbc:postgresql://localhost:15432/customer
-    url: jdbc:postgresql://postgres:5432/customer
+#    url: jdbc:postgresql://localhost:15432/fraud
+    url: jdbc:postgresql://postgres:5432/fraud
     username: ismail
   jpa:
     hibernate:
@@ -24,11 +24,6 @@ spring:
 #    base-url: http://localhost:9411
     base-url: http://zipkin:9411
 
-  rabbitmq:
-    addresses: rabbitmq:5672
-#    addresses: localhost:5672
-
-
 eureka:
   client:
     service-url:
@@ -36,4 +31,4 @@ eureka:
       defaultZone: http://eureka-server:8761/eureka
     fetch-registry: true
     register-with-eureka: true
-    enabled: true                # disabled for k8s
+    enabled: false                # disabled for k8s

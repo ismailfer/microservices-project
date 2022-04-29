@@ -54,74 +54,74 @@ services:
       - spring
 
 # modules containers from docker hub
-  eureka-server:
-    image: ismailfer/eureka-server:latest
-    container_name: eureka-server
-    ports:
-      - "8761:8761"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-    depends_on:
-      - zipkin
+#  eureka-server:
+#    image: ismailfer/eureka-server:latest
+#    container_name: eureka-server
+#    ports:
+#      - "8761:8761"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#    networks:
+#      - spring
+#    depends_on:
+#      - zipkin
+#
+#  api-gateway:
+#    image: ismailfer/apigateway:latest
+#    container_name: apigateway
+#    ports:
+#      - "18083:8083"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#    networks:
+#      - spring
+#    depends_on:
+#      - zipkin
+#      - eureka-server
 
-  api-gateway:
-    image: ismailfer/apigateway:latest
-    container_name: apigateway
-    ports:
-      - "18083:8083"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-    depends_on:
-      - zipkin
-      - eureka-server
-
-  customer:
-    image: ismailfer/customer:latest
-    container_name: customer
-    ports:
-      - "18080:8080"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-    depends_on:
-      - zipkin
-      - postgres
-      - rabbitmq
-      - eureka-server
-
-  fraud:
-    image: ismailfer/fraud:latest
-    container_name: fraud
-    ports:
-      - "18081:18081"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-    depends_on:
-      - zipkin
-      - postgres
-      - eureka-server
-
-  notification:
-    image: ismailfer/notification:latest
-    container_name: notification
-    ports:
-      - "18082:8082"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-    depends_on:
-      - zipkin
-      - postgres
-      - rabbitmq
-      - eureka-server
+#  customer:
+#    image: ismailfer/customer:latest
+#    container_name: customer
+#    ports:
+#      - "18080:8080"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#    networks:
+#      - spring
+#    depends_on:
+#      - zipkin
+#      - postgres
+#      - rabbitmq
+#      - eureka-server
+#
+#  fraud:
+#    image: ismailfer/fraud:latest
+#    container_name: fraud
+#    ports:
+#      - "18081:8081"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#    networks:
+#      - spring
+#    depends_on:
+#      - zipkin
+#      - postgres
+#      - eureka-server
+#
+#  notification:
+#    image: ismailfer/notification:latest
+#    container_name: notification
+#    ports:
+#      - "18082:8082"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#    networks:
+#      - spring
+#    depends_on:
+#      - zipkin
+#      - postgres
+#      - rabbitmq
+#      - eureka-server
 
 # Networks are used within the docker container; as localhost there will refer to the container and not our host
 networks:
