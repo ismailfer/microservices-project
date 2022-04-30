@@ -1,6 +1,8 @@
 # microservices-project
 
 
+![plot](./src/main/resources/images/architecture.png)
+
 ## Description
 
 - Microservices Project
