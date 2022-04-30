@@ -14,9 +14,9 @@
 - API Gateway Load Balancer
 - Eureka service discovery
 - Postgres DB
-- Docker, Docker Compose
+- Docker, Docker Compose, Docker Hub
 - Kubernetes, Minikube
 
-Based on the course by Amigoscode:
+Based on the Microservices and Distributed Systems course by Amigoscode:
 https://www.amigoscode.com/p/microservices
 
