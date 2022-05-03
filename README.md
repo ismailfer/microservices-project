@@ -19,6 +19,6 @@
 - Docker, Docker Compose, Docker Hub
 - Kubernetes, Minikube
 
-Based on the Microservices and Distributed Systems course by Amigoscode:
-https://www.amigoscode.com/p/microservices
+## Kubenetes Diagram
 
+![](src/main/resources/images/kubenetes.png)
